@@ -4,10 +4,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
+import {
+    NavbarComponent,
+    BusScheduleChartComponent,
+    BestTravelOptionDisplayComponent
+} from './components/';
+import { BusSelectionService } from './services';
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        NavbarComponent,
+        BusScheduleChartComponent,
+        BestTravelOptionDisplayComponent
     ],
     imports: [
         BrowserModule,
@@ -15,7 +24,9 @@ import { MaterialModule } from './material/material.module';
         BrowserAnimationsModule,
         AppRoutingModule
     ],
-    providers: [],
+    providers: [
+        BusSelectionService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
