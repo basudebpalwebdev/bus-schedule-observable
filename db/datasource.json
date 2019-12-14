@@ -1,0 +1,74 @@
+{
+    "timeTable": [
+        {
+            "companyName": "A",
+            "departureFromC": "12:35 am",
+            "arrivalAtD": "1:35 am"
+        },
+        {
+            "companyName": "B",
+            "departureFromC": "2:00 pm",
+            "arrivalAtD": "2:45 pm"
+        },
+        {
+            "companyName": "A",
+            "departureFromC": "2:00 pm",
+            "arrivalAtD": "3:00 pm"
+        },
+        {
+            "companyName": "A",
+            "departureFromC": "3:10 pm",
+            "arrivalAtD": "4:20 pm"
+        },
+        {
+            "companyName": "B",
+            "departureFromC": "3:20 pm",
+            "arrivalAtD": "4:10 pm"
+        },
+        {
+            "companyName": "B",
+            "departureFromC": "4:15 pm",
+            "arrivalAtD": "5:40 pm"
+        },
+        {
+            "companyName": "A",
+            "departureFromC": "4:20 pm",
+            "arrivalAtD": "6:10 pm"
+        },
+        {
+            "companyName": "B",
+            "departureFromC": "6:15 pm",
+            "arrivalAtD": "7:50 pm"
+        },
+        {
+            "companyName": "A",
+            "departureFromC": "6:20 pm",
+            "arrivalAtD": "7:30 pm"
+        },
+        {
+            "companyName": "B",
+            "departureFromC": "8:00 am",
+            "arrivalAtD": "9:45 am"
+        },
+        {
+            "companyName": "B",
+            "departureFromC": "9:10 am",
+            "arrivalAtD": "10:15 am"
+        },
+        {
+            "companyName": "A",
+            "departureFromC": "9:20 am",
+            "arrivalAtD": "10:10 am"
+        },
+        {
+            "companyName": "A",
+            "departureFromC": "5:00 pm",
+            "arrivalAtD": "6:00 pm"
+        },
+        {
+            "companyName": "B",
+            "departureFromC": "5:00 pm",
+            "arrivalAtD": "6:10 pm"
+        }
+    ]
+}
