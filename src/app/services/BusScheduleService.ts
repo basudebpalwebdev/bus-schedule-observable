@@ -1,19 +1,19 @@
-import { BusSchedule } from '../datatypes/';
+import { BusScheduleDT } from '../datatypes/';
 import dataSource from './../../../db/datasource.json';
 import { timeSeperator, startChartAfterCurrentTime, bestTravelOptionFinder } from './../helpers/';
 import { Observable } from 'rxjs';
 
 export class BusSelectionService {
-    private busScheduleChart: BusSchedule[] = new Array<BusSchedule>();
+    private busScheduleChart: BusScheduleDT[] = new Array<BusScheduleDT>();
 
     constructor() {
         this.busScheduleChart = this.formatDataSource(new Date(), dataSource);
     }
 
-    private formatDataSource(currentTime: Date, jsonData: any): BusSchedule[] {
-        const busScheduleData: BusSchedule[] = new Array<BusSchedule>();
+    private formatDataSource(currentTime: Date, jsonData: any): BusScheduleDT[] {
+        const busScheduleData: BusScheduleDT[] = new Array<BusScheduleDT>();
         jsonData.timeTable.map((data: any) => {
-            const busSchedule: BusSchedule = new BusSchedule();
+            const busSchedule: BusScheduleDT = new BusScheduleDT();
             busSchedule.companyName = data.companyName;
             const departureFromC = timeSeperator(data.departureFromC);
             busSchedule.departureFromC = new Date(currentTime.setHours(departureFromC.hour, departureFromC.minute));
@@ -24,26 +24,26 @@ export class BusSelectionService {
         return busScheduleData;
     }
 
-    private sortBusScheduleByDepartureTimeDesc(BusScheduleList: BusSchedule[]) {
-        return BusScheduleList.sort((a: BusSchedule, b: BusSchedule) => {
+    private sortBusScheduleDTByDepartureTimeDesc(BusScheduleDTList: BusScheduleDT[]) {
+        return BusScheduleDTList.sort((a: BusScheduleDT, b: BusScheduleDT) => {
             return a.departureFromC <= b.departureFromC ? -1 : 1;
         });
     }
 
-    startListAfterCurrentTime(): Observable<BusSchedule[]> {
-        const sortedList: BusSchedule[] = this.sortBusScheduleByDepartureTimeDesc(this.busScheduleChart);
-        const busScheduleChartObservable: Observable<BusSchedule[]> = new Observable<BusSchedule[]>(
+    startListAfterCurrentTime(): Observable<BusScheduleDT[]> {
+        const sortedList: BusScheduleDT[] = this.sortBusScheduleDTByDepartureTimeDesc(this.busScheduleChart);
+        const busScheduleChartObservable: Observable<BusScheduleDT[]> = new Observable<BusScheduleDT[]>(
             (observer: any) => observer.next(startChartAfterCurrentTime(sortedList))
         );
         return busScheduleChartObservable;
     }
 
-    getBestTravelOption(): Observable<BusSchedule> {
-        let bestTravelOption: BusSchedule = new BusSchedule();
+    getBestTravelOption(): Observable<BusScheduleDT> {
+        let bestTravelOption: BusScheduleDT = new BusScheduleDT();
         this.startListAfterCurrentTime().subscribe(
-            (list: BusSchedule[]) => bestTravelOption = bestTravelOptionFinder(list)
+            (list: BusScheduleDT[]) => bestTravelOption = bestTravelOptionFinder(list)
         );
-        const bestTravelOptionObservable: Observable<BusSchedule> = new Observable<BusSchedule>(
+        const bestTravelOptionObservable: Observable<BusScheduleDT> = new Observable<BusScheduleDT>(
             (observer: any) => observer.next(bestTravelOption)
         );
         return bestTravelOptionObservable;

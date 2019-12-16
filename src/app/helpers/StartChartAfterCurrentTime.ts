@@ -1,8 +1,8 @@
-import { BusSchedule } from './../datatypes/BusScheduleDT';
+import { BusScheduleDT } from './../datatypes/';
 
-export function startChartAfterCurrentTime(sortedChart: BusSchedule[]): BusSchedule[] {
-    const beforeCurrentTimeChart: BusSchedule[] = new Array<BusSchedule>();
-    const afterCurrentTimeChart: BusSchedule[] = new Array<BusSchedule>();
+export function startChartAfterCurrentTime(sortedChart: BusScheduleDT[]): BusScheduleDT[] {
+    const beforeCurrentTimeChart: BusScheduleDT[] = new Array<BusScheduleDT>();
+    const afterCurrentTimeChart: BusScheduleDT[] = new Array<BusScheduleDT>();
     const currentDate: Date = new Date();
     sortedChart.map((item) => {
         if (item.departureFromC <= currentDate) {

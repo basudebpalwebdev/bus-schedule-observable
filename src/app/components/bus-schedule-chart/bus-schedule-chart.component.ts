@@ -1,7 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { BusSelectionService } from 'src/app/services';
-import { BusSchedule } from 'src/app/datatypes';
+import { BusScheduleDT, FormattedBusScheduleDT } from 'src/app/datatypes';
 import { Subscription } from 'rxjs';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { formatListDateTime } from 'src/app/helpers';
 
 @Component({
     selector: 'app-bus-schedule-chart',
@@ -10,14 +13,20 @@ import { Subscription } from 'rxjs';
 })
 export class BusScheduleChartComponent implements OnInit, OnDestroy {
 
-    busScheduleChart: BusSchedule[] = new Array<BusSchedule>();
+    displayedColumns: string[] = ['companyName', 'departureFromC', 'arrivalAtD'];
+    dataSource = new MatTableDataSource<FormattedBusScheduleDT>();
     private busScheduleSubscription: Subscription;
+    @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
     constructor(private busSelectionService: BusSelectionService) { }
 
     ngOnInit() {
         this.busScheduleSubscription = this.busSelectionService.startListAfterCurrentTime()
-            .subscribe((list: BusSchedule[]) => this.busScheduleChart = list);
+            .subscribe((list: BusScheduleDT[]) =>
+                this.dataSource = new MatTableDataSource<FormattedBusScheduleDT>(
+                    formatListDateTime(list)
+                ));
+        this.dataSource.paginator = this.paginator;
     }
 
     ngOnDestroy() {

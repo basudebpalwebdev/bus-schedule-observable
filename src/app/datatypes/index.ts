@@ -1,1 +1,2 @@
-export { BusSchedule } from './BusScheduleDT';
+export { BusScheduleDT } from './BusScheduleDT';
+export { FormattedBusScheduleDT } from './FormattedBusScheduleDT';

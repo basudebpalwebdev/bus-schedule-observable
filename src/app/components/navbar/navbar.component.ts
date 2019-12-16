@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { BusSelectionService } from 'src/app/services';
-import { BusSchedule } from 'src/app/datatypes';
+import { BusScheduleDT } from 'src/app/datatypes';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -17,9 +17,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.busScheduleSubscription = this.busSelectionService.startListAfterCurrentTime()
-            .subscribe((list: BusSchedule[]) => console.log(list));
+            .subscribe((list: BusScheduleDT[]) => console.log(list));
         this.bestOptionSubscription = this.busSelectionService.getBestTravelOption()
-            .subscribe((option: BusSchedule) => console.log(option));
+            .subscribe((option: BusScheduleDT) => console.log(option));
     }
 
     ngOnDestroy() {
