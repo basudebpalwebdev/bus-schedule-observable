@@ -1,1 +1,13 @@
-<p>best-travel-option-display works!</p>
+<mat-card class="display-card">
+    <mat-card-header>
+        <mat-card-title>Best travel option</mat-card-title>
+    </mat-card-header>
+    <hr />
+    <mat-card-content>
+        <mat-grid-list cols="3" rowHeight="50px">
+            <mat-grid-tile>Company : {{bestTravelOption.companyName}}</mat-grid-tile>
+            <mat-grid-tile>Departure : {{bestTravelOption.departureFromC}}</mat-grid-tile>
+            <mat-grid-tile>Arrival : {{bestTravelOption.arrivalAtD}}</mat-grid-tile>
+        </mat-grid-list>
+    </mat-card-content>
+</mat-card>
