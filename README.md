@@ -6,11 +6,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-Problem Statement: 
+## Problem Statement: 
 There are two bus companies A and B which offer services from city C to D (one way only). Your task is to suggest the best bus company that can make you reach your destination faster.
 Design a website that will take a file which has the bus timetable as input and display a table with the bus timings sorted according to departure time and you also have to suggest the user the next best bus available to travel to D depending upon the current system time.
 
-Conditions:
+### Conditions:
 1. Travel shouldn’t exceed more than 90 mins. If more ignore the bus
 2. Always prefer B over A if the busses start at the same time
 3. Pick the fastest bus company to reach the destination
@@ -20,7 +20,7 @@ Conditions:
 7. Website should be attractive and responsive.  You are allowed to use third party libraries.
 
 
-Example Time table file(can be a text or csv)
+### Example Time table file(can be a text or csv)
 
 | Company | Departure from C | Arrival at D |
 |---------|------------------|--------------|
