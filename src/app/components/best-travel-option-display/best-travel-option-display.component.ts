@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { BusSelectionService } from 'src/app/services';
 import { BusScheduleDT, FormattedBusScheduleDT } from 'src/app/datatypes';
-import { formatListDateTime } from 'src/app/helpers';
+import { formatSingleDateTime } from 'src/app/helpers';
 
 @Component({
     selector: 'app-best-travel-option-display',
@@ -18,7 +18,7 @@ export class BestTravelOptionDisplayComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.bestOptionSubscription = this.busSelectionService.getBestTravelOption()
-            .subscribe((option: BusScheduleDT) => this.bestTravelOption = formatListDateTime([option])[0]);
+            .subscribe((option: BusScheduleDT) => this.bestTravelOption = formatSingleDateTime(option));
     }
 
     ngOnDestroy() {

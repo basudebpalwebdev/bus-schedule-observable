@@ -10,15 +10,18 @@ function formatDateTime(date: Date): string {
     return newDateTimeFormat;
 }
 
-export function formatListDateTime(list: BusScheduleDT[]): FormattedBusScheduleDT[] {
-
-    const formattedBusScheduleDTList: FormattedBusScheduleDT[] = new Array<FormattedBusScheduleDT>();
-    list.map((item) => {
-        const formattedBusScheduleDT: FormattedBusScheduleDT = new FormattedBusScheduleDT();
-        formattedBusScheduleDT.companyName = item.companyName;
-        formattedBusScheduleDT.arrivalAtD = formatDateTime(item.arrivalAtD);
-        formattedBusScheduleDT.departureFromC = formatDateTime(item.departureFromC);
-        formattedBusScheduleDTList.push(formattedBusScheduleDT);
-    });
-    return formattedBusScheduleDTList;
+function formatListDateTime(list: BusScheduleDT[]): FormattedBusScheduleDT[] {
+    return list.map((item) => formatSingleDateTime(item));
 }
+function formatSingleDateTime(item: BusScheduleDT): FormattedBusScheduleDT {
+    const formattedBusScheduleDT: FormattedBusScheduleDT = new FormattedBusScheduleDT();
+    formattedBusScheduleDT.companyName = item.companyName;
+    formattedBusScheduleDT.arrivalAtD = formatDateTime(item.arrivalAtD);
+    formattedBusScheduleDT.departureFromC = formatDateTime(item.departureFromC);
+    return formattedBusScheduleDT;
+}
+
+export {
+    formatListDateTime,
+    formatSingleDateTime
+};
